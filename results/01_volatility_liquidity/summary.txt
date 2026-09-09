@@ -1,0 +1,13 @@
+Project 1 findings (sample=False)
+Varieties: IF, IH, IC, IM | RV sampling: 5min
+
+[IF] early-session r² / day-mean ≈ 3.19x | bars=147,559 | Amihud median=7.325e-07 p90=9.931e-07
+[IH] early-session r² / day-mean ≈ 3.14x | bars=147,559 | Amihud median=1.332e-06 p90=1.727e-06
+[IC] early-session r² / day-mean ≈ 3.30x | bars=147,559 | Amihud median=1.013e-06 p90=1.489e-06
+[IM] early-session r² / day-mean ≈ 3.49x | bars=147,559 | Amihud median=5.262e-07 p90=9.831e-07
+[IF-IH] 20d corr: mean=0.923 min=0.655 max=0.992
+[IC-IM] 20d corr: mean=0.946 min=0.700 max=0.996
+
+Outputs: /Users/esvabella/Projects/futures-research/results/01_volatility_liquidity
+Figures: /Users/esvabella/Projects/futures-research/results/01_volatility_liquidity/figures
+Note: main-continuous prices are unsmoothed at rolls (OK for RV/liquidity).

@@ -1,0 +1,82 @@
+# Shared config for futures research projects
+markets:
+  IF:
+    name: CSI300 Futures
+    multiplier: 300
+    margin_rate: 0.12  # illustrative desk assumption (not official history)
+  IH:
+    name: SSE50 Futures
+    multiplier: 300
+    margin_rate: 0.12
+  IC:
+    name: CSI500 Futures
+    multiplier: 200
+    margin_rate: 0.14
+  IM:
+    name: CSI1000 Futures
+    multiplier: 200
+    margin_rate: 0.14
+
+session:
+  morning_open: "09:30"
+  morning_close: "11:30"
+  afternoon_open: "13:00"
+  afternoon_close: "15:00"
+  timezone: Asia/Shanghai
+
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  sample_dir: data/sample
+  bar_freq: 1min
+  required_columns:
+    - datetime
+    - open
+    - high
+    - low
+    - close
+    - volume
+    - open_interest
+
+project_01:
+  varieties: [IF, IH, IC, IM]
+  rv_sampling_minutes: 5
+  rolling_windows_days: [20, 60]
+  analysis_start: "2024-01-01"
+  results_dir: results/01_volatility_liquidity
+
+project_02:
+  # With spot indices available: run basis mean-reversion (primary).
+  # Cross-product pairs remain available via mode: pairs.
+  mode: basis  # basis | pairs
+  zscore_window: 20
+  zscore_entry: 2.0
+  zscore_exit: 0.5
+  cost_bps_one_way: 2.5
+  train_ratio: 0.7
+  regime_window: 60
+  analysis_start: "2024-01-01"
+  cross_pairs:
+    - [IF, IH]
+    - [IC, IM]
+  basis_mode: relative
+  basis_pairs:
+    IF: CSI300
+    IH: SSE50
+    IC: CSI500
+    IM: CSI1000
+  results_dir: results/02_stat_arb
+
+project_03:
+  analysis_start: "2024-01-01"
+  var_confidence: [0.95, 0.99]
+  shock_pct: [0.05, 0.10, 0.15]
+  # signed lots: + long / - short (illustrative book)
+  positions:
+    IF: 5
+    IH: -3
+    IC: 4
+    IM: -2
+  # top N historical one-day portfolio moves for scenario table
+  n_worst_days: 5
+  results_dir: results/03_risk_margin

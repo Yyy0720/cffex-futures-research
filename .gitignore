@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.DS_Store
+.mplconfig/
+.tools/
+
+# Desk / proprietary market data (local only)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/sample/*
+!data/sample/.gitkeep
+
+# Results: keep summaries only
+results/**/*
+!results/**/.gitkeep
+!results/**/summary.txt
+
+*.parquet

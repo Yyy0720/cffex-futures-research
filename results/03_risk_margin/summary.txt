@@ -1,0 +1,30 @@
+Project 3 — exposure & margin stress (sample=False)
+As-of prices: {'IF': 4651.8, 'IH': 2923.0, 'IC': 7647.0, 'IM': 7148.8}
+Positions (lots): {'IF': 5.0, 'IH': -3.0, 'IC': 4.0, 'IM': -2.0}
+
+Exposure summary:
+  gross_notional: 18,585,520.00
+  net_notional: 7,605,080.00
+  long_notional: 13,095,300.00
+  short_notional: -5,490,220.00
+  total_initial_margin: 2,409,804.80
+  net_gross_ratio: 0.41
+
+Historical VaR (daily PnL):
+  95%: 139,621.00
+  99%: 242,324.40
+
+Worst historical days (realized book PnL):
+  2025-04-07: realized=-610,760 | replay_now=-816,325
+  2026-07-17: realized=-382,960 | replay_now=-381,615
+  2024-10-09: realized=-374,300 | replay_now=-449,124
+  2026-02-02: realized=-349,420 | replay_now=-339,492
+  2026-06-26: realized=-299,060 | replay_now=-275,483
+
+Monitoring logic (illustrative):
+- Alert if 1-day historical VaR(99%) > 30% of total initial margin (VaR99=242,324, margin=2,409,805, ratio=10.06%).
+- Alert if replay of worst historical day on current book < -25% of margin (worst_replay=-816,325).
+- Alert if |net|/gross notional exceeds desk limit (current 40.92%); limit itself should be set with mentor.
+- Margin rates are CONFIG ASSUMPTIONS, not exchange historical adjustments.
+
+Outputs: /Users/esvabella/Projects/futures-research/results/03_risk_margin

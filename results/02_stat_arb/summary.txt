@@ -1,0 +1,20 @@
+Project 2 — mode=basis (sample=False)
+Note: without spot indices, pairs mode is the supported real-data path.
+
+[IF_CSI300] ADF p=0.0002 stat=True | EG coint p=0.0003 | beta=0.9794 | half-life=5.017382810314433
+  full Sharpe=0.745 total_pnl=0.079104 maxDD=-0.034626
+  test Sharpe=1.606 total_pnl=0.038274 (train ends 2025-10-21)
+
+[IH_SSE50] ADF p=0.0197 stat=True | EG coint p=0.0015 | beta=0.9933 | half-life=4.129446954514952
+  full Sharpe=1.318 total_pnl=0.120089 maxDD=-0.028434
+  test Sharpe=1.679 total_pnl=0.032054 (train ends 2025-10-21)
+
+[IC_CSI500] ADF p=0.0000 stat=True | EG coint p=0.0000 | beta=0.9778 | half-life=4.096926346673025
+  full Sharpe=1.035 total_pnl=0.133404 maxDD=-0.049178
+  test Sharpe=1.934 total_pnl=0.071297 (train ends 2025-10-21)
+
+[IM_CSI1000] ADF p=0.0000 stat=True | EG coint p=0.0000 | beta=0.9768 | half-life=4.453079947492443
+  full Sharpe=1.176 total_pnl=0.192144 maxDD=-0.038500
+  test Sharpe=1.829 total_pnl=0.066262 (train ends 2025-10-21)
+
+Honest note: PnL is in residual/log-spread units with a flat bps cost model — use for methodology demo, not as a claim of live edge.
